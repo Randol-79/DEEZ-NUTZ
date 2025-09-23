@@ -156,6 +156,21 @@
             70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
             100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
+
+        /* Integration Carousel Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-scroll {
+            display: flex;
+            width: calc(200 * 14px); /* (Number of items) * (width of item) */
+            animation: scroll 60s linear infinite;
+        }
+        .integrations-carousel:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+
     </style>
     <script>
         // Custom Tailwind CSS Configuration
@@ -210,11 +225,9 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" aria-labelledby="hero-headline">
-            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-                <source src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Light-Speed.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" 
+                 style="background-image: url('https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/ChatGPT%20Image%20Sep%2023%2C%202025%2C%2012_22_02%20PM.png'); background-size: cover; background-position: center top; background-attachment: fixed;" 
+                 aria-labelledby="hero-headline">
             <div class="absolute inset-0 bg-gray-900/60 z-1"></div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -244,14 +257,40 @@
         <!-- Integrations Row Section -->
         <section id="integrations" class="py-16 bg-gray-900 fade-in-section">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-center text-2xl font-semibold text-gray-400 mb-10">Integrates With Your Favorite Tools</h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-                    <div title="QuickBooks" class="flex justify-center h-12 grayscale hover:grayscale-0 transition-all duration-300"> <img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Quickbooks%20Logo.jpg" alt="QuickBooks Logo" class="object-contain h-full w-auto rounded-md"/> </div>
-                    <div title="HubSpot" class="flex justify-center h-12 grayscale hover:grayscale-0 transition-all duration-300"> <img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Hubspot.jpg" alt="HubSpot Logo" class="object-contain h-full w-auto rounded-md"/> </div>
-                    <div title="GitHub" class="flex justify-center h-12 grayscale hover:grayscale-0 transition-all duration-300"> <img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Github.jpg" alt="GitHub Logo" class="object-contain h-full w-auto rounded-md"/> </div>
-                    <div title="n8n" class="flex justify-center h-12 grayscale hover:grayscale-0 transition-all duration-300"> <img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/n8n%20logo.png" alt="n8n Logo" class="object-contain h-full w-auto rounded-md"/> </div>
-                    <div title="Google Workspace" class="flex justify-center h-12 grayscale hover:grayscale-0 transition-all duration-300"> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="object-contain h-full w-auto"/> </div>
-                    <div title="Slack" class="flex justify-center h-12 grayscale hover:grayscale-0 transition-all duration-300"> <img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack Logo" class="object-contain h-full w-auto"/> </div>
+                <h2 class="text-center text-2xl font-semibold text-gray-400 mb-10">Works With The Tools You Already Love</h2>
+                <div class="integrations-carousel w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                    <ul class="animate-scroll flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none">
+                        <!-- Logos repeated for seamless looping -->
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Quickbooks%20Logo.jpg" alt="QuickBooks Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Hubspot.jpg" alt="HubSpot Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Github.jpg" alt="GitHub Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/n8n%20logo.png" alt="n8n Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://cdn.worldvectorlogo.com/logos/asana-1.svg" alt="Asana Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li class="flex items-center text-gray-400 hover:text-white transition-colors">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-auto mr-3"><path d="M20 28V20H28V28H20Z" stroke="currentColor" stroke-width="2"></path><path d="M36 28V20H44V28H36Z" stroke="currentColor" stroke-width="2"></path><path d="M20 44V36H28V44H20Z" stroke="currentColor" stroke-width="2"></path><path d="M36 44V36H44V44H36Z" stroke="currentColor" stroke-width="2"></path><path d="M28 24H36" stroke="currentColor" stroke-width="2"></path><path d="M24 28V36" stroke="currentColor" stroke-width="2"></path><path d="M40 28V36" stroke="currentColor" stroke-width="2"></path><path d="M28 40H36" stroke="currentColor" stroke-width="2"></path></svg>
+                            <span class="font-semibold">Open Architecture</span>
+                        </li>
+                        <li class="text-gray-400 font-bold text-xl">100+ More</li>
+                    </ul>
+                    <ul class="animate-scroll flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none" aria-hidden="true">
+                        <!-- Logos repeated for seamless looping -->
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Quickbooks%20Logo.jpg" alt="QuickBooks Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Hubspot.jpg" alt="HubSpot Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/Github.jpg" alt="GitHub Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://pub-23f7e1f517734fc09a3807185400d484.r2.dev/n8n%20logo.png" alt="n8n Logo" class="h-10 w-auto rounded-md grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://cdn.worldvectorlogo.com/logos/asana-1.svg" alt="Asana Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li><img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all"/></li>
+                        <li class="flex items-center text-gray-400 hover:text-white transition-colors">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-auto mr-3"><path d="M20 28V20H28V28H20Z" stroke="currentColor" stroke-width="2"></path><path d="M36 28V20H44V28H36Z" stroke="currentColor" stroke-width="2"></path><path d="M20 44V36H28V44H20Z" stroke="currentColor" stroke-width="2"></path><path d="M36 44V36H44V44H36Z" stroke="currentColor" stroke-width="2"></path><path d="M28 24H36" stroke="currentColor" stroke-width="2"></path><path d="M24 28V36" stroke="currentColor" stroke-width="2"></path><path d="M40 28V36" stroke="currentColor" stroke-width="2"></path><path d="M28 40H36" stroke="currentColor" stroke-width="2"></path></svg>
+                            <span class="font-semibold">Open Architecture</span>
+                        </li>
+                        <li class="text-gray-400 font-bold text-xl">100+ More</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -539,6 +578,18 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+
+        // --- Anchor Link for Chatbot ---
+        const checkHashForModal = () => {
+            if (window.location.hash === '#get-free-plan') {
+                openModal();
+            }
+        };
+
+        // Check on initial page load
+        checkHashForModal();
+        // Check when the hash changes
+        window.addEventListener('hashchange', checkHashForModal);
     });
     </script>
     
@@ -569,4 +620,5 @@
     </script>
 </body>
 </html>
+
 
